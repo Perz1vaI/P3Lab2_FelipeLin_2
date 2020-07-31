@@ -24,6 +24,12 @@ int main()
             int n;
             cout << "Ingrese el tamaño de la matriz: ";
             cin >> n;
+            while (n < 0)
+            {
+                cout << "No puede ingresar negativos!" << endl;
+                cin >> n;
+            }
+
             int matriz[n][n];
 
             for (int i = 0; i < n; i++)
@@ -54,8 +60,6 @@ int main()
                 }
             }
             mediana = suma / n;
-            cout << suma << "= suma\n";
-            cout << "Mediana = " << mediana << endl;
 
             for (int i = 0; i < n; i++)
             {
@@ -66,9 +70,6 @@ int main()
             }
 
             desviacion = sqrt(sumatoria_desviacion / n);
-
-            cout << "Sumatoria de la desvicaion estandar= " << sumatoria_desviacion << endl;
-            cout << "Desviacion estandar= " << desviacion << endl;
 
             double matriz_estandarizada[n][n];
 
@@ -97,6 +98,11 @@ int main()
             int n;
             cout << "Ingrese el limite: ";
             cin >> n;
+            while (n < 0)
+            {
+                cout << "No puede ingresar negativos!" << endl;
+                cin >> n;
+            }
 
             Ejercicio3_Recurisva(n, 0);
 
@@ -108,14 +114,14 @@ int main()
             break;
         }
 
-        cout << "1. Ejercicio 1 \n2. Ejercicio 2\n3. Ejercicio 3\n4. Salida" << endl;
+        cout << "\n1. Ejercicio 1 \n2. Ejercicio 2\n3. Ejercicio 3\n4. Salida" << endl;
         cin >> menu;
     }
 }
 
 void Ejercicio3_Recurisva(int n, double suma)
 {
-    double pi, sumatoria = 0, suma2;
+    double pi, sumatoria = 0;
 
     if (n == 0)
     {
@@ -125,7 +131,7 @@ void Ejercicio3_Recurisva(int n, double suma)
     }
     else
     {
-        suma2 = suma2 + pow(-1, n) / ((2 * n) + 1);
-        Ejercicio3_Recurisva(n - 1, suma + suma2);
+        sumatoria = sumatoria + pow(-1, n) / ((2 * n) + 1);
+        Ejercicio3_Recurisva(n - 1, suma + sumatoria);
     }
 }
